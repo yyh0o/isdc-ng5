@@ -25,7 +25,7 @@ export class Holder {
   folders: { [key: number]: any[]; } = {};
   activeMailAccount: number;
   activeMailFolder: number;
-
+  blogs: Response;
   constructor(public api: Api) {
 
   }
@@ -68,6 +68,20 @@ export class Holder {
       this.banners = data;
     }, err => {
       this.alerts.push({level: 'alert-danger', content: '横幅获取失败，请稍后再试'});
+      console.error('ERROR', err);
+    });
+    return seq;
+  }
+
+  getBlog(): Observable<Response> {
+    if (this.blogs) {
+      return Observable.of(this.blogs);
+    }
+    const seq = this.api.get('blog').share();
+    seq.subscribe((data) => {
+      this.banners = data;
+    }, err => {
+      this.alerts.push({level: 'alert-danger', content: '博客获取失败，请稍后再试'});
       console.error('ERROR', err);
     });
     return seq;
