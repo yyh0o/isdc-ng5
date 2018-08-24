@@ -1,4 +1,4 @@
-<div class="container header-margin">
+<div class="container header-padding">
   <ol class="breadcrumb">
     <li>博客</li>
     <!--<li class="active"><a routerLink="{{(titleNow=='所有博文')?'/blog/all-post':(titleNow=='发博客'?'/blog/send-post':(titleNow=='我的博客'?'/blog/my-post':'/blog'))}}">{{titleNow}}</a></li>-->
@@ -6,10 +6,28 @@
   </ol>
   <div class="row">
     <article class="col-xs-12 maincontent">
-      <header class="page-header">
-        <h1 class="page-title">{{titleNow}}</h1>
-      </header>
-      <router-outlet></router-outlet>
+
     </article>
   </div>
+
+  <tr *ngFor="let blog of blogs">
+    <div class="post-preview">
+      <a href={{blog.url}}>
+        <h2 class="post-title">
+          {{blog.title}}
+        </h2>
+        <div class="post-content-preview">
+          {{blog.content}}
+        </div>
+      </a>
+      <p class="post-meta">
+        Posted by ISDC on {{blog.date.substr(0,10)}}
+      </p>
+    </div>
+    <hr>
+
+
+  </tr>
+
+
 </div>

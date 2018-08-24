@@ -23,19 +23,17 @@ import {Holder} from '../provider/holder';
 import {ScheduleComponent} from './schedule/schedule.component';
 import {ServiceComponent} from './service/service.component';
 import {ServiceJWCComponent} from './service-jwc/service-jwc.component';
-import {JWCService} from '../provider/JWCService';
+import {JWCService} from '../provider/jwc-service';
 import {AllPostComponent} from './all-post/all-post.component';
 import {PostComponent} from './post/post.component';
-import {ServiceKongMinHaoComponent} from './service-kong-min-hao/service-kong-min-hao.component';
-import {KongMinHaoService} from '../provider/KongMinHaoService';
-import {BlogService} from '../provider/BlogService';
+import {BlogService} from '../provider/blog-service';
 import {BlogComponent} from './blog/blog.component';
 import {SendPostComponent} from './send-post/send-post.component';
 import {HisPostComponent} from './his-post/his-post.component';
 import {UpdatePostComponent} from './update-post/update-post.component';
 import {ServiceMatrixComponent} from './service-matrix/service-matrix.component';
-import {matrixService} from '../provider/matrix-service';
-import {CTFService} from '../provider/CTFService';
+import {MatrixService} from '../provider/matrix-service';
+import {CTFService} from '../provider/ctf-service';
 import {ServiceCTFComponent} from './service-ctf/service-ctf.component';
 
 const appRoutes: Routes = [{
@@ -50,7 +48,7 @@ const appRoutes: Routes = [{
   path: 'blog',
   component: BlogComponent,
   children: [{
-    path: 'all-post',
+    path: '',
     component: AllPostComponent,
     data: {title: '所有博文', color: '#FFFFFF'}
   }, {
@@ -58,7 +56,7 @@ const appRoutes: Routes = [{
     component: SendPostComponent,
     data: {title: '发博客', color: '#FFFFFF'}
   }, {
-    path: ':id',
+    path: 'post/:id',
     component: PostComponent,
     data: {title: '博文详情', color: '#FFFFFF'}
   }, {
@@ -66,13 +64,9 @@ const appRoutes: Routes = [{
     component: UpdatePostComponent,
     data: {title: '编辑博文', color: '#FFFFFF'}
   }, {
-    path: 'his-post/:user_name',
+    path: ':user_name',
     component: HisPostComponent,
     data: {title: '那谁的博客', color: '#FFFFFF'}
-  }, {
-    path: '',
-    redirectTo: 'all-post',
-    pathMatch: 'full'
   }],
   data: {title: '博客', color: '#FFFFFF'}
 }, {
@@ -108,15 +102,11 @@ const appRoutes: Routes = [{
     component: ServiceJWCComponent,
     data: {title: '教务信息查询', color: '#FFFFFF'}
   }, {
-    path: 'KongMinHao',
-    component: ServiceKongMinHaoComponent,
-    data: {title: '资产加加加', color: '#FFFFFF'}
-  }, {
-    path: 'Matrix',
+    path: 'matrix',
     component: ServiceMatrixComponent,
     data: {title: '矩阵计算器', color: '#FFFFFF'}
   }, {
-    path: 'CTF',
+    path: 'ctf',
     component: ServiceCTFComponent,
     data: {title: 'CTF平台', color: '#FFFFFF'}
   }, {
@@ -145,7 +135,6 @@ const appRoutes: Routes = [{
     ScheduleComponent,
     ServiceComponent,
     ServiceJWCComponent,
-    ServiceKongMinHaoComponent,
     BlogComponent,
     PostComponent,
     SendPostComponent,
@@ -157,7 +146,6 @@ const appRoutes: Routes = [{
     SendPostComponent,
     PostComponent,
     ServiceCTFComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -167,7 +155,7 @@ const appRoutes: Routes = [{
     RouterModule.forRoot(appRoutes),
     MarkdownModule.forRoot()
   ],
-  providers: [User, Api, Holder, JWCService, KongMinHaoService, BlogService, matrixService,CTFService],
+  providers: [User, Api, Holder, JWCService, BlogService, MatrixService, CTFService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
