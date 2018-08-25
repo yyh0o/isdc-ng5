@@ -12,8 +12,9 @@ export class BlogComponent implements OnInit {
   blogs: {
     content: string,
     url: string,
-    date: string
-    title: string
+    date: string,
+    title: string,
+    writer: string
   }[];
 
   constructor(private holder: Holder) {
