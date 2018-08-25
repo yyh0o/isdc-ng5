@@ -26,6 +26,7 @@ export class Holder {
   activeMailAccount: number;
   activeMailFolder: number;
   blogs: Response;
+
   constructor(public api: Api) {
 
   }
