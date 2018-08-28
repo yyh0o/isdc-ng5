@@ -80,7 +80,7 @@ export class Holder {
     }
     const seq = this.api.get('blog').share();
     seq.subscribe((data) => {
-      this.banners = data;
+      this.blogs = data;
     }, err => {
       this.alerts.push({level: 'alert-danger', content: '博客获取失败，请稍后再试'});
       console.error('ERROR', err);

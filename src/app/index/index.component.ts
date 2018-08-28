@@ -26,6 +26,7 @@ export class IndexComponent implements OnInit {
       detail: '何愁没有机会展现自己，我们将会尽量详细的提供信息安全类比赛的信息，并且在允许的范围内提供尽可能的帮助。让大家都有机会能够参与其中。'
     }]
   };
+
   banners: { backgroundPic: string, title: string, detail: string, action: string, routerLink?: string, href?: string }[];
 
   slogan: { title: string, detail: string } = {title: 'A WAY TO HACKER!', detail: '无关乎基础与天赋，只在乎你是否一往无前'};
