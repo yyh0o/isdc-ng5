@@ -5,8 +5,10 @@
   </ol>
   <div class="carousel-inner" role="listbox">
     <div *ngFor="let banner of banners;let i = index;" [ngClass]="{'item':true,'active':i==0}">
+
       <header class="head"
-              [ngStyle]="{'background': 'url('+banner.pic+') no-repeat', 'background-size':'cover'}">
+              [ngStyle]="{'background': 'url('+banner.backgroundPic+') no-repeat', 'background-size':'cover'}">
+
         <div class="container">
           <div class="row">
             <h1 class="lead">{{banner.title}}</h1>
