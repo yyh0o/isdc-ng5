@@ -35,6 +35,7 @@ import {ServiceMatrixComponent} from './service-matrix/service-matrix.component'
 import {MatrixService} from '../provider/matrix-service';
 import {CTFService} from '../provider/ctf-service';
 import {ServiceCTFComponent} from './service-ctf/service-ctf.component';
+import { ServiceHomeworkComponent } from './service-homework/service-homework.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -106,6 +107,10 @@ const appRoutes: Routes = [{
     component: ServiceMatrixComponent,
     data: {title: '矩阵计算器', color: '#FFFFFF'}
   }, {
+    path: 'homework',
+    component: ServiceHomeworkComponent,
+    data: {title: '提交作业', color: '#FFFFFF'}
+  }, {
     path: 'ctf',
     component: ServiceCTFComponent,
     data: {title: 'CTF平台', color: '#FFFFFF'}
@@ -146,6 +151,7 @@ const appRoutes: Routes = [{
     SendPostComponent,
     PostComponent,
     ServiceCTFComponent,
+    ServiceHomeworkComponent,
   ],
   imports: [
     BrowserModule,
