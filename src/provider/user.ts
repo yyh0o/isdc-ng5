@@ -42,9 +42,11 @@ export class User {
         this.user = res.data;
         this.createAuthorizationHeader(this.headers);
         localStorage.setItem('accessToken', this.user.accessToken);
+        document.cookie = 'accessToken=' + this.user.accessToken + '; path=/';
       }
     }, err => {
       localStorage.removeItem('accessToken');
+      document.cookie = 'accessToken= ; path=/';
       this.holder.alerts.push({level: 'alert-danger', content: '登录失败，请稍后再试'});
       console.error('ERROR', err);
     });
@@ -59,13 +61,16 @@ export class User {
         this.user = res.data;
         this.createAuthorizationHeader(this.headers);
         localStorage.setItem('accessToken', this.user.accessToken);
+        document.cookie = 'accessToken=' + this.user.accessToken + '; path=/';
       } else {
         localStorage.removeItem('accessToken');
+        document.cookie = 'accessToken= ; path=/';
       }
     }, err => {
       console.error('ERROR', err);
       this.holder.alerts.push({level: 'alert-danger', content: '登录失败，请稍后再试'});
       localStorage.removeItem('accessToken');
+      document.cookie = 'accessToken= ; path=/';
     });
     return seq;
   }
@@ -73,6 +78,7 @@ export class User {
   logOut() {
     this.user = {userName: '', accessToken: '', email: ''};
     localStorage.removeItem('accessToken');
+    document.cookie = 'accessToken= ; path=/';
   }
 
 }
