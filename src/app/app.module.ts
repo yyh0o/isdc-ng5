@@ -36,6 +36,7 @@ import {MatrixService} from '../provider/matrix-service';
 import {CTFService} from '../provider/ctf-service';
 import {ServiceCTFComponent} from './service-ctf/service-ctf.component';
 import { ServiceHomeworkComponent } from './service-homework/service-homework.component';
+import {FileUploadModule} from 'ng2-file-upload';
 
 const appRoutes: Routes = [{
   path: '',
@@ -159,7 +160,8 @@ const appRoutes: Routes = [{
     HttpModule,
     ResponsiveModule,
     RouterModule.forRoot(appRoutes),
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    FileUploadModule
   ],
   providers: [User, Api, Holder, JWCService, BlogService, MatrixService, CTFService],
   bootstrap: [AppComponent]
