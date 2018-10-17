@@ -1,9 +1,9 @@
 <div align="center">
-  <img src="../../assets/img.jpg">
   <p></p>
   <div>最大单个上传文件为10MB</div>
   <p></p>
   <input type="file" ng2FileSelect [uploader]="uploader" (change)="selectedFileOnChanged($event)"/>
   <p></p>
-  <button (click)="uploadFile()" id="upload">点击上传</button>
+  <input type="submit" id="upload" value="{{loading?'上传中……':'点击上传'}}" class="btn btn-warning btn-lg"
+                       [disabled]="loading" (click)="uploadFile()">
 </div>
