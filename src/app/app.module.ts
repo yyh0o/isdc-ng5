@@ -37,6 +37,7 @@ import {CTFService} from '../provider/ctf-service';
 import {ServiceCTFComponent} from './service-ctf/service-ctf.component';
 import { ServiceHomeworkComponent } from './service-homework/service-homework.component';
 import {FileUploadModule} from 'ng2-file-upload';
+import {NoticeComponent} from './notice/notice.component';
 
 const appRoutes: Routes = [{
   path: '',
@@ -121,6 +122,10 @@ const appRoutes: Routes = [{
     pathMatch: 'full'
   }],
   data: {title: '关于我们', color: '#FFFFFF'}
+}, {
+  path: 'notice',
+  component: NoticeComponent,
+  data: {title: '最新开课通知', color: '#FFFFFF'}
 }, {path: '**', component: PageNotFoundComponent, data: {title: '出错啦', color: '#000000'}}];
 
 
@@ -153,6 +158,7 @@ const appRoutes: Routes = [{
     PostComponent,
     ServiceCTFComponent,
     ServiceHomeworkComponent,
+    NoticeComponent
   ],
   imports: [
     BrowserModule,

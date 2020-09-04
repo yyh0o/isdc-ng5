@@ -1,0 +1,42 @@
+
+<div class="container header-padding">
+  <ol class="breadcrumb">
+    <li></li>
+  </ol>
+  <div class="row">
+    <aside class="col-md-2 sidebar">
+      <ul class="nav nav-side">
+      </ul>
+    </aside>
+    <article class="col-md-10">
+      <header class="page-header">
+        <h1 class="page-title">授课线报</h1>
+      </header>
+
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+        <div *ngFor="let notice of notices;let i = index;" class="panel panel-success">
+          <div class="panel-heading" role="tab" id="{{'heading'+i}}">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion"
+                 href="{{'#collapse'+i}}" attr.aria-controls="{{'collapse'+i}}">
+                {{notice.title}}
+              </a>
+            </h4>
+          </div>
+          <div id="{{'collapse'+i}}" class="panel-collapse collapse {{i==0?'in':''}}" role="tabpanel"
+               attr.aria-labelledby="{{'heading'+i}}">
+            <div class="panel-body">
+              <markdown>
+                {{notice.content}}
+              </markdown>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </article>
+  </div>
+</div>
+

@@ -8,6 +8,7 @@ import {Response} from '@angular/http';
 export class Holder {
 
   announces: Response;
+  notices: Response;
   alerts: { level: string, content: string }[] = [];
   semester: Response;
   banners: Response;
@@ -40,6 +41,19 @@ export class Holder {
       this.announces = data;
     }, err => {
       this.alerts.push({level: 'alert-danger', content: '公告获取失败，请稍后再试'});
+      console.error('ERROR', err);
+    });
+    return seq;
+  }
+  getNotice(): Observable<Response> {
+    if (this.notices) {
+      return Observable.of(this.notices);
+    }
+    const seq = this.api.get('intro/notice').share();
+    seq.subscribe((data) => {
+      this.notices = data;
+    }, err => {
+      this.alerts.push({level: 'alert-danger', content: '授课通知获取失败，请稍后再试'});
       console.error('ERROR', err);
     });
     return seq;
