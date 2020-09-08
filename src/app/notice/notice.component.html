@@ -28,7 +28,8 @@
                attr.aria-labelledby="{{'heading'+i}}">
             <div class="panel-body">
               <markdown>
-                {{notice.content}}
+                <div class="post-content-preview" [innerHtml]="notice.content">
+                </div>
               </markdown>
             </div>
           </div>
